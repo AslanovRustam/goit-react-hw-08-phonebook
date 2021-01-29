@@ -1,19 +1,27 @@
-import Form from './Form/Form';
-import Contactlist from './Contacts/Contacts';
-import Filter from './Filter/Filter';
 import s from './app.module.css';
 import { connect } from 'react-redux';
-import addContact from './redux/contacts-operations';
+import ContactsView from './ContactsView';
+import { Switch, Route } from 'react-router-dom';
+import AppBar from './Components/AppBar';
+import Container from './Components/Container/Container';
 
 function App() {
   return (
-    <div className={s.mainSection}>
-      <Form onSubmit={addContact} />
-      <Filter />
+    <Container>
+      <AppBar />
 
-      <Contactlist />
-    </div>
+      <Switch>
+        {/* <Route exact path="/" component={HomeView} /> */}
+        {/* <Route path="/register" component={RegisterView} /> */}
+        {/* <Route path="/login" component={LoginView} /> */}
+        <Route path="/contacts" component={ContactsView} />
+        {/* <Route path="/contacts" exact>
+    <ContactsView />
+    </Route> */}
+      </Switch>
+    </Container>
   );
 }
 
-export default connect()(App);
+// export default connect()(App);
+export default App;

@@ -2,7 +2,7 @@ import s from './contacs.module.css';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import deleteContact from '../redux/contacts-operations';
+// import deleteContact from '../redux/contacts-operations';
 import contactsSelectors from '../redux/contacts-selectors';
 import contactsOperations from '../redux/contacts-operations';
 

@@ -1,5 +1,3 @@
-// import { createStore, combineReducers } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 import contactReducer from './reducer';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
@@ -11,11 +9,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-///=====ШАГ №1 - ванильный Redux
-// const reducer = combineReducers({
-//   contacts: contactReducer,
-// });
-// const store = createStore(reducer, composeWithDevTools());
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
