@@ -1,0 +1,22 @@
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12;
+  font-weight: 700;
+  color: #27017e;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.link:hover {
+  color: #e84a5f;
+  transform: scale(1.1);
+}
+.link:focus {
+  color: #e84a5f;
+}
+
+.greatings {
+  /* display: block; */
+  text-align: center;
+}

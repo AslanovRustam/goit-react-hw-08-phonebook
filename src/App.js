@@ -4,6 +4,7 @@ import ContactsView from './ContactsView';
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './Components/AppBar';
 import Container from './Components/Container/Container';
+import HomeView from './Components/Home/Home';
 
 function App() {
   return (
@@ -11,13 +12,13 @@ function App() {
       <AppBar />
 
       <Switch>
-        {/* <Route exact path="/" component={HomeView} /> */}
+        <Route exact path="/" component={HomeView} />
         {/* <Route path="/register" component={RegisterView} /> */}
         {/* <Route path="/login" component={LoginView} /> */}
         <Route path="/contacts" component={ContactsView} />
         {/* <Route path="/contacts" exact>
-    <ContactsView />
-    </Route> */}
+          <ContactsView />
+        </Route> */}
       </Switch>
     </Container>
   );
