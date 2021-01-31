@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import {
   addContactRequest,
@@ -39,8 +40,18 @@ const fetchContacts = () => dispatch => {
     .catch(error => dispatch(fetchContactError(error)));
 };
 
+const register = createAsyncThunk('auth/register', async credentials => {
+  try {
+    const { data } = await axios.post('/users/signup', credentials);
+    return data;
+  } catch (error) {
+    return <span>что-то пошло не так</span>;
+  }
+});
+
 export default {
   addContact,
   deleteContact,
   fetchContacts,
+  register,
 };

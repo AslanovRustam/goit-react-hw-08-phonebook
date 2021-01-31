@@ -11,7 +11,7 @@ export default function HomeView() {
         </NavLink>{' '}
         or{' '}
         <NavLink to="/register" exact className={styles.link}>
-          register
+          sign up
         </NavLink>{' '}
         👀🐱‍🏍
       </h1>

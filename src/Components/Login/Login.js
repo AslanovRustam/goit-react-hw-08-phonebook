@@ -1,26 +1,35 @@
-import { VscAccount } from 'react-icons/fc';
-//  <VscAccount />;
-
 import { useState } from 'react';
-import s from './registration.module.css';
+import s from '../Registration/registration.module.css';
 import shortid from 'shortid';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import contactOperations from '../../redux/contacts-operations';
 import store from '../../redux/store';
 
-export default function Registration({ onSubmit }) {
-  const [name, setName] = useState('');
+function Login({ onSubmit }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const dispatch = useDispatch();
-
-  const handleSubmitForm = event => {
-    dispatch(contactOperations.register({ name, email, password }));
-    event.preventDefault();
-    setName('');
+  const reset = () => {
     setEmail('');
     setPassword('');
+  };
+
+  const handleSubmitForm = event => {
+    event.preventDefault();
+    // onSubmit(name, number);
+    const getState = store.getState();
+    // const getContacts = getState.contacts.contacts.map(contact =>
+    //   contact.name.toLocaleLowerCase(),
+    // );
+    // const isGetContactAlready = getContacts.includes(name.toLocaleLowerCase());
+    // if (isGetContactAlready) {
+    //   alert(`${name} is already in contacts!`);
+    //   reset();
+    //   return;
+    // } else {
+    reset();
+    return onSubmit(email, password);
+    // }
   };
 
   const contactInputId = shortid.generate();
@@ -28,17 +37,6 @@ export default function Registration({ onSubmit }) {
   return (
     <div className={s.registrationContainer}>
       <form className={s.form} onSubmit={handleSubmitForm}>
-        <label>
-          Name
-          <input
-            className={s.input}
-            type="text"
-            name="name"
-            value={name}
-            onChange={e => setName(e.currentTarget.value)}
-            id={contactInputId}
-          ></input>
-        </label>
         <label>
           E-mail
           <input
@@ -60,9 +58,16 @@ export default function Registration({ onSubmit }) {
           ></input>
         </label>
         <button className={s.buttonAdd} type="submit">
-          Register
+          Log in
         </button>
       </form>
     </div>
   );
 }
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: (email, password) =>
+    dispatch(contactOperations.addContact(email, password)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);

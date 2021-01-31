@@ -5,6 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 import AppBar from './Components/AppBar';
 import Container from './Components/Container/Container';
 import HomeView from './Components/Home/Home';
+import Registration from './Components/Registration/Registration';
+import Login from './Components/Login/Login';
 
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
 
       <Switch>
         <Route exact path="/" component={HomeView} />
-        {/* <Route path="/register" component={RegisterView} /> */}
-        {/* <Route path="/login" component={LoginView} /> */}
+        <Route path="/register" component={Registration} />
+        <Route path="/login" component={Login} />
         <Route path="/contacts" component={ContactsView} />
         {/* <Route path="/contacts" exact>
           <ContactsView />
