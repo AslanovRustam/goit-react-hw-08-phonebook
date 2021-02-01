@@ -49,9 +49,19 @@ const register = createAsyncThunk('auth/register', async credentials => {
   }
 });
 
+const logIn = createAsyncThunk('auth/logIn', async credentials => {
+  try {
+    const { data } = await axios.post('/users/login', credentials);
+    return data;
+  } catch (error) {
+    return <span>что-то пошло не так</span>;
+  }
+});
+
 export default {
   addContact,
   deleteContact,
   fetchContacts,
   register,
+  logIn,
 };

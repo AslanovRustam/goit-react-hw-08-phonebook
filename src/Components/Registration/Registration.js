@@ -1,6 +1,3 @@
-import { VscAccount } from 'react-icons/fc';
-//  <VscAccount />;
-
 import { useState } from 'react';
 import s from './registration.module.css';
 import shortid from 'shortid';

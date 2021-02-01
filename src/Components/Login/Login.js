@@ -3,33 +3,20 @@ import s from '../Registration/registration.module.css';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
 import contactOperations from '../../redux/contacts-operations';
-import store from '../../redux/store';
+import { useDispatch } from 'react-redux';
 
 function Login({ onSubmit }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const reset = () => {
-    setEmail('');
-    setPassword('');
-  };
+  const dispatch = useDispatch();
 
   const handleSubmitForm = event => {
+    dispatch(contactOperations.logIn({ email, password }));
     event.preventDefault();
-    // onSubmit(name, number);
-    const getState = store.getState();
-    // const getContacts = getState.contacts.contacts.map(contact =>
-    //   contact.name.toLocaleLowerCase(),
-    // );
-    // const isGetContactAlready = getContacts.includes(name.toLocaleLowerCase());
-    // if (isGetContactAlready) {
-    //   alert(`${name} is already in contacts!`);
-    //   reset();
-    //   return;
-    // } else {
-    reset();
-    return onSubmit(email, password);
-    // }
+
+    setEmail('');
+    setPassword('');
   };
 
   const contactInputId = shortid.generate();
@@ -67,7 +54,7 @@ function Login({ onSubmit }) {
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (email, password) =>
-    dispatch(contactOperations.addContact(email, password)),
+    dispatch(contactOperations.logIn(email, password)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);
