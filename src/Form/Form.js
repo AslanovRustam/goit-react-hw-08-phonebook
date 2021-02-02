@@ -4,7 +4,7 @@ import s from './form.module.css';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
 import contactOperations from '../redux/contacts-operations';
-import store from '../redux/store';
+import { store } from '../redux/store';
 
 function Form({ onSubmit }) {
   const [name, setName] = useState('');

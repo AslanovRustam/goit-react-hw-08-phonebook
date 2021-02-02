@@ -5,16 +5,16 @@ import { connect } from 'react-redux';
 import contactOperations from '../../redux/contacts-operations';
 import { useDispatch } from 'react-redux';
 
-function Login({ onSubmit }) {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+// function Login({ onSubmit }) {
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
 
   const handleSubmitForm = event => {
-    dispatch(contactOperations.logIn({ email, password }));
     event.preventDefault();
-
+    dispatch(contactOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
   };
@@ -52,9 +52,9 @@ function Login({ onSubmit }) {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
-  onSubmit: (email, password) =>
-    dispatch(contactOperations.logIn(email, password)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   onSubmit: (email, password) =>
+//     dispatch(contactOperations.logIn(email, password)),
+// });
 
-export default connect(null, mapDispatchToProps)(Login);
+// export default connect(null, mapDispatchToProps)(Login);
