@@ -40,9 +40,19 @@ const fetchContacts = () => dispatch => {
     .catch(error => dispatch(fetchContactError(error)));
 };
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
+    token.set(data.token);
     return data;
   } catch (error) {
     return <span>что-то пошло не так</span>;
@@ -52,8 +62,18 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/logIn', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
+    token.set(data.token);
     console.log(data);
     return data;
+  } catch (error) {
+    return <span>что-то пошло не так</span>;
+  }
+});
+
+const logOut = createAsyncThunk('auth/logout', async () => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
   } catch (error) {
     return <span>что-то пошло не так</span>;
   }
@@ -65,4 +85,5 @@ export default {
   fetchContacts,
   register,
   logIn,
+  logOut,
 };

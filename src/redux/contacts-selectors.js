@@ -35,7 +35,7 @@ const getContactsAfterFilter = state => {
   };
 };
 
-const getIsLoggedIn = state => state.auth.getIsLoggedIn;
+const getIsLoggedIn = state => state.auth.isloggedIn;
 const getUserName = state => state.auth.user.name;
 
 const authSelectors = {
@@ -49,4 +49,5 @@ export default {
   getContactsAfterFilter,
   getIsLoggedIn,
   getUserName,
+  authSelectors,
 };
