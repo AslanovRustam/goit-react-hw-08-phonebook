@@ -63,7 +63,7 @@ const logIn = createAsyncThunk('auth/logIn', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     return <span>что-то пошло не так</span>;
@@ -79,6 +79,27 @@ const logOut = createAsyncThunk('auth/logout', async () => {
   }
 });
 
+const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+      // return state;
+    }
+
+    token.set(persistedToken);
+
+    try {
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (error) {}
+    // console.log(thunkAPI.getState());
+  },
+);
+
 export default {
   addContact,
   deleteContact,
@@ -86,4 +107,5 @@ export default {
   register,
   logIn,
   logOut,
+  fetchCurrentUser,
 };

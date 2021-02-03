@@ -15,8 +15,8 @@ export default function Login() {
   const handleSubmitForm = event => {
     event.preventDefault();
     dispatch(contactOperations.logIn({ email, password }));
-    setEmail('');
-    setPassword('');
+    // setEmail('');
+    // setPassword('');
   };
 
   const contactInputId = shortid.generate();
