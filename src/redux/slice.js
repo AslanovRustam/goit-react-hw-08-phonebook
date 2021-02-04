@@ -10,7 +10,7 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraRedusers: {
+  extraReducers: {
     [operations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
@@ -20,7 +20,6 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      console.log(state);
     },
     [operations.logOut.fulfilled](state, action) {
       state.user = { name: null, email: null };
