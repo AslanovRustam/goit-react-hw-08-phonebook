@@ -16,7 +16,7 @@ const Contactlist = ({ contacts }) => {
   return (
     <div className={s.contactsList}>
       <h2 className={s.contactsTitle}>Contacts</h2>
-      <span>Total number of contacts - {contacts.length}</span>
+      <span>Total number of contacts - {contacts.contacts.length}</span>
       <ul className={s.list}>
         {/* {contacts.map(({ id, name, number }) => ( */}
         {contacts.contacts.map(({ id, name, number }) => (

@@ -4,20 +4,9 @@ import authSelectors from '../../redux/auth-selectors';
 // import defaultAvatar from './default-avatar.png';
 import { VscAccount } from 'react-icons/vsc';
 import contactsOperations from '../../redux/contacts-operations';
+import styles from './usermenu.module.css';
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  avatar: {
-    marginRight: 4,
-  },
-  name: {
-    fontWeight: 700,
-    marginRight: 12,
-  },
-};
+// const styles = {};
 
 export default function UserMenu() {
   const dispatch = useDispatch();
@@ -25,11 +14,12 @@ export default function UserMenu() {
   //   const avatar = defaultAvatar;
 
   return (
-    <div style={styles.container}>
+    <div className={styles.container}>
       {/* <img src={avatar} alt="" width="32" style={styles.avatar} /> */}
-      <span style={styles.name}>Добро пожаловать, {name}</span>
-      <VscAccount width="350" />
+      <span className={styles.name}>You logged in as {name}</span>
+      <VscAccount size="24" />
       <button
+        className={styles.button}
         type="button"
         onClick={() => dispatch(contactsOperations.logOut())}
       >

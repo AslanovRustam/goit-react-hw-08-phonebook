@@ -1,0 +1,33 @@
+/* container: {
+    display: 'flex',
+    alignItems: 'space-between',
+  },
+  avatar: {
+    marginRight: 4,
+  },
+  name: {
+    fontWeight: 700,
+    marginRight: 12,
+  }, */
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.button {
+  margin-left: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 500ms;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  color: aliceblue;
+  background-color: brown;
+}
