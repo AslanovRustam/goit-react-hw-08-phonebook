@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import AppBar from './Components/AppBar';
 import Container from './Components/Container/Container';
 import HomeView from './Components/Home/Home';
-import Registration from './Components/Registration/Registration';
+// import Registration from './Components/Registration/Registration';
 import Login from './Components/Login/Login';
 import { useEffect, Suspense, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +13,8 @@ import operations from './redux/contacts-operations';
 import PrivateRoute from './Components/PrivateRoute';
 import PublicRoute from './Components/PublicRoute';
 import authSelectors from './redux/auth-selectors';
+import SigIn from './Components/loginMaterial';
+import Registration from './Components/RegistrationMaterial';
 
 // const HomeView = lazy(() => import('./Components/Home/Home'));
 // const Registration = lazy(() =>
@@ -47,7 +49,8 @@ function App() {
             <Registration />
           </PublicRoute>
           <PublicRoute exact path="/login" restricted>
-            <Login />
+            {/* <Login /> */}
+            <SigIn />
           </PublicRoute>
           {/* <Route path="/register" component={Registration} />
         <Route path="/login" component={Login} /> */}

@@ -1,10 +1,22 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import s from './form.module.css';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
 import contactOperations from '../redux/contacts-operations';
 import { store } from '../redux/store';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 function Form({ onSubmit }) {
   const [name, setName] = useState('');
@@ -14,6 +26,8 @@ function Form({ onSubmit }) {
     setName('');
     setNumber('');
   };
+
+  const classes = useStyles();
 
   const handleSubmitForm = event => {
     event.preventDefault();
@@ -37,34 +51,36 @@ function Form({ onSubmit }) {
   const contactInputId = shortid.generate();
 
   return (
-    <>
-      <form className={s.form} onSubmit={handleSubmitForm}>
-        <label>
-          Name
-          <input
-            className={s.input}
-            type="text"
-            name="name"
-            value={name}
-            onChange={e => setName(e.currentTarget.value)}
-            id={contactInputId}
-          ></input>
-        </label>
-        <label>
-          Number
-          <input
-            className={s.input}
-            type="number"
-            name="number"
-            value={number}
-            onChange={e => setNumber(e.currentTarget.value)}
-          ></input>
-        </label>
-        <button className={s.buttonAdd} type="submit">
+    <div>
+      <form className={classes.root} onSubmit={handleSubmitForm}>
+        <TextField
+          id="standard-basic"
+          type="text"
+          name="name"
+          value={name}
+          onChange={e => setName(e.currentTarget.value)}
+          id={contactInputId}
+          label="Name"
+        />
+        <TextField
+          id="standard-basic"
+          type="number"
+          name="number"
+          value={number}
+          onChange={e => setNumber(e.currentTarget.value)}
+          label="Number"
+        />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="default"
+          className={classes.submit}
+        >
           Add contact
-        </button>
+        </Button>
       </form>
-    </>
+    </div>
   );
 }
 
