@@ -5,6 +5,10 @@ import { useDispatch } from 'react-redux';
 // import deleteContact from '../redux/contacts-operations';
 import contactsSelectors from '../redux/contacts-selectors';
 import contactsOperations from '../redux/contacts-operations';
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const Contactlist = ({ contacts }) => {
   const dispatch = useDispatch();
@@ -13,6 +17,14 @@ const Contactlist = ({ contacts }) => {
     dispatch(contactsOperations.fetchContacts());
   }, []);
   // console.log(contacts);
+
+  const useStyles = makeStyles(theme => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+  }));
+  const classes = useStyles();
+
   return (
     <div className={s.contactsList}>
       <h2 className={s.contactsTitle}>Contacts</h2>
@@ -22,13 +34,23 @@ const Contactlist = ({ contacts }) => {
         {contacts.contacts.map(({ id, name, number }) => (
           <li className={s.item} key={id}>
             {name} {number}
-            <button
+            {/* <button
               type="button"
               onClick={() => onDeleteContact(id)}
               className={s.button}
             >
               <span>Delete</span>
-            </button>
+            </button> */}
+            <Button
+              size="small"
+              variant="outlined"
+              color="secondary"
+              className={classes.button}
+              startIcon={<DeleteIcon />}
+              onClick={() => onDeleteContact(id)}
+            >
+              Delete
+            </Button>
           </li>
         ))}
       </ul>

@@ -74,7 +74,7 @@ function Form({ onSubmit }) {
           type="submit"
           fullWidth
           variant="contained"
-          color="default"
+          color="primary"
           className={classes.submit}
         >
           Add contact

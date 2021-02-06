@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './home.module.css';
+import Matrix from '../../welcome.png';
 
 export default function HomeView() {
   return (
@@ -13,8 +14,8 @@ export default function HomeView() {
         <NavLink to="/register" exact className={styles.link}>
           sign up
         </NavLink>{' '}
-        👀🐱‍🏍
       </h1>
+      <img src={Matrix} width="30%" />
     </div>
   );
 }
