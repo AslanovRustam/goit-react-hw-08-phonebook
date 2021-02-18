@@ -74,10 +74,9 @@ export default function SignIn() {
           <TextField
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             id="email"
-            label="Email"
+            label="Email*"
             name="email"
             value={email}
             onChange={e => setEmail(e.currentTarget.value)}
@@ -87,12 +86,11 @@ export default function SignIn() {
           <TextField
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             name="password"
             value={password}
             onChange={e => setPassword(e.currentTarget.value)}
-            label="Password"
+            label="Password*"
             type="password"
             id="password"
             autoComplete="current-password"
